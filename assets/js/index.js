@@ -1,15 +1,40 @@
-const API_URL='https://jsonplaceholder.typicode.com/users'
-const API_URL2='https://alecaroca-vigilant-fishstick-4pr9vw954qwh7qxj-8000.preview.app.github.dev/Cliente/'
+const API_URL2='https://alecaroca-vigilant-fishstick-4pr9vw954qwh7qxj-8000.preview.app.github.dev/User/'
+
 const aplication = document.querySelector('.app');
+const usuario = document.querySelector('.usuario');
+const password = document.querySelector('.clave');
+const btn = document.querySelector('.btnSubmit')
 
-/* fetch(API_URL)
-    .then((response)=> response.json())
-    .then((users)=>{
-        console.log(users)
-        const usuarios = users.map((user) => `<tr><td class="text-center">${user.name}</td><td class="text-center">${user.email}</td><td class="text-center">${user.phone}</td><td class="text-center">${user.website}</td></tr>`)
-        aplication.innerHTML = usuarios
-    }); */
 
+
+
+btn.addEventListener("click",function(event){
+    event.preventDefault()
+    fetch(API_URL2+usuario.value)
+    .then(response=> response.json())
+    .then(data2 => {
+        console.log(data2)
+        if(data2.rut == usuario.value & data2.password == password.value){
+            window.location= 'inicio.html'
+            sessionStorage.setItem('token',usuario.value)
+        }
+        else{
+            alert("Error en Usuario o Clave")
+        }
+    })
+    .catch(error => console.log(error))
+})
+
+
+
+
+
+
+
+
+
+
+/* 
     fetch(API_URL)
         .then(response=> response.json())
         .then(data => {
@@ -22,12 +47,7 @@ const aplication = document.querySelector('.app');
             document.getElementById('app').innerHTML = body
         })
         .catch(error => console.log(error))
-    
-    fetch(API_URL2+"16147121")
-        .then(response=> response.json())
-        .then(data2 => {console.log(data2)
-})
-        .catch(error => console.log(error))
+ */
 
 
         
