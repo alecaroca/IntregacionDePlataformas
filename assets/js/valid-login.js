@@ -1,0 +1,5 @@
+const nombre = document.getElementById("")
+const contra = document.getElementById("")
+const coincideContra = document.getElementById("")
+const form = document.getElementById("")
+const mensaje = document.getElementById("")
