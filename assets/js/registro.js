@@ -6,29 +6,39 @@ const email1 = document.querySelector('.cuatro')
 const password1 = document.querySelector('.cinco')
 const rol1 = "User"
 const reg = document.querySelector('.seis')
+$("#alertNO").hide();
 
 
 reg.addEventListener("click",function(event){
     event.preventDefault()
-    console.log(rut1)
-    fetch(API_URL2, {
-        method: 'POST',
-        body: JSON.stringify({
-          rut: rut1.value,
-          nombre: nombre1.value,
-          telefono: telefono1.value,
-          email: email1.value,
-          password: password1.value,
-          rol: rol1,
-        }),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      })
-        .then((response) => response.json())
-        .then((json) => {
-            console.log(json)
-            window.location= 'index.html'
-        });
+    if((rut1.value,nombre1.value,telefono1.value,email1.value,password1.value)==""){
+      $("#alertNO").fadeTo(2500, 500).slideUp(500, function(){
+        $("#alertNO").slideUp(500);
+      });
+
+    }else{
+      console.log(rut1)
+      fetch(API_URL2, {
+          method: 'POST',
+          body: JSON.stringify({
+            rut: rut1.value,
+            nombre: nombre1.value,
+            telefono: telefono1.value,
+            email: email1.value,
+            password: password1.value,
+            rol: rol1,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        })
+          .then((response) => response.json())
+          .then((json) => {
+              console.log(json)
+              window.location= 'index.html'
+          });
+
+    }
+
 })
 

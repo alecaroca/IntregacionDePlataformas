@@ -66,13 +66,13 @@
             
                                             <div class="mb-3">
                                                 <label for="username" class="form-label">Usuario</label>
-                                                <input type="text" class="form-control usuario" id="username" placeholder="Tu rut sin guión 101231234" required>
+                                                <input type="text" class="form-control usuario" id="username" placeholder="Tu rut sin guión 101231234" required autocomplete="off">
                                             </div>
                     
                                             <div class="mb-3">
                                                 <label class="form-label" for="password-input">Contraseña</label>
                                                 <div class="position-relative auth-pass-inputgroup mb-3">
-                                                    <input type="password" class="form-control pe-5 clave" placeholder="Ingresa tu password" id="password-input" required>
+                                                    <input type="password" class="form-control pe-5 clave" placeholder="Ingresa tu password" id="password-input" required autocomplete="off">
                                                     <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                                 </div>
                                             </div>
@@ -83,7 +83,10 @@
                                             </div>
                                             
                                             <div class="mt-4">
-                                                <button class="btn btn-success w-100 btnSubmit" type="submit">Iniciar</button>
+                                                <button class="btn btn-success w-100 btnSubmit" type="submit" id="liveAlertBtn">Iniciar</button>
+                                                <br><br>
+                                                <div id="alertSI" class="alert alert-danger" role="alert">Ingresa tu usuario y contraseña</div>
+                                                <div id="alertNO" class="alert alert-danger" role="alert">Usuario o contraseña inválidos</div>
                                             </div> 
                                         </form>
                                     </div>

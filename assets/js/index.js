@@ -6,24 +6,38 @@ const password = document.querySelector('.clave');
 const btn = document.querySelector('.btnSubmit')
 
 
-
+$("#alertSI").hide();
+$("#alertNO").hide();
 
 btn.addEventListener("click",function(event){
     event.preventDefault()
-    fetch(API_URL2+usuario.value)
-    .then(response=> response.json())
-    .then(data2 => {
-        console.log(data2)
-        if(data2.rut == usuario.value & data2.password == password.value){
-            window.location= 'inicio.html'
-            sessionStorage.setItem('token',usuario.value)
-        }
-        else{
-            alert("Error en Usuario o Clave")
-        }
-    })
-    .catch(error => console.log(error))
+  
+    if(usuario.value =="" || password.value==""){
+        $("#alertSI").fadeTo(2000, 500).slideUp(500, function(){
+            $("#alertNO").slideUp(500);
+        });
+    }else{
+        fetch(API_URL2+usuario.value)
+        .then(response=> response.json())
+        .then(data2 => {
+            console.log(data2)
+            if(data2.rut == usuario.value & data2.password == password.value){
+                window.location= 'inicio.html'
+                sessionStorage.setItem('token',usuario.value)
+            }
+            else{
+                $("#alertNO").fadeTo(2000, 500).slideUp(500, function(){
+                    $("#alertNO").slideUp(500);
+                });
+            }
+        })
+        .catch(error => console.log(error))
+    }  
 })
+
+
+    
+    
 
 
 
